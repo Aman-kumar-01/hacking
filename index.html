@@ -10,8 +10,8 @@
 
 <style>
     body {
-        background-color: green;
-        color: white;
+        background-color: black;
+        color: rgb(6, 180, 6);
     }
 
     .container {
@@ -56,11 +56,11 @@
 
 <script>
     const messages = [
-        "Initializing Hacking",
-        "Reading your Files",
-        "Password files Detected",
-        "Sending all passwords and personal files to server",
-        "Cleaning up"
+        ">>> Initializing Hacking",
+        ">>> Reading your Files",
+        ">>> Password files Detected",
+        ">>> Sending all passwords and personal files to server",
+        ">>> Cleaning up"
     ];
 
     const container = document.querySelector('.container');
@@ -86,7 +86,7 @@
         const dotInterval = setInterval(() => {
             msgDiv.querySelector('.dots').textContent = ".".repeat(dotCount);
             dotCount = dotCount < 3 ? dotCount + 1 : 1;
-        }, 500);
+        }, 400);
 
         setTimeout(() => {
             clearInterval(dotInterval);
