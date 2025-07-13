@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<style>
+    body {
+        background-color: green;
+        color: white;
+    }
+
+    .container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .message {
+        font-family: monospace;
+        margin: 10px;
+        font-size: 1.2em;
+    }
+</style>
+
+<body>
+    <div class="container">
+
+        <div class="title">
+            <h1> Now You are on Darkweb</h1>
+        </div>
+
+        <div class="initializing">Initializing Hacking...</div>
+        <div class="reading">Reading your Files...</div>
+        <div class="password">Password files Detected...</div>
+        <div class="sending">Sending all passwords and personal files to server...</div>
+        <div class="cleaning">Cleaning up...</div>
+        <div>
+            <h2> You are Hacked </h2>
+        </div>
+
+    </div>
+</body>
+
+<script>
+    const messages = [
+        "Initializing Hacking",
+        "Reading your Files",
+        "Password files Detected",
+        "Sending all passwords and personal files to server",
+        "Cleaning up"
+    ];
+
+    const container = document.querySelector('.container');
+    const delay = () => Math.floor(Math.random() * 7000) + 1000; // 1 to 7 seconds
+
+    let index = 0;
+
+    function showMessage() {
+        if (index >= messages.length) {
+            const hacked = document.createElement("h2");
+            hacked.textContent = "You are Hacked!";
+            container.appendChild(hacked);
+            return;
+        }
+
+        const msgDiv = document.createElement("div");
+        msgDiv.classList.add("message");
+        msgDiv.innerHTML = `<span>${messages[index]}</span><span class="dots">.</span>`;
+        container.appendChild(msgDiv);
+
+        // Animate dots
+        let dotCount = 1;
+        const dotInterval = setInterval(() => {
+            msgDiv.querySelector('.dots').textContent = ".".repeat(dotCount);
+            dotCount = dotCount < 3 ? dotCount + 1 : 1;
+        }, 500);
+
+        setTimeout(() => {
+            clearInterval(dotInterval);
+            index++;
+            showMessage();
+        }, delay());
+    }
+
+    // Start the sequence
+    document.querySelector('.initializing').remove(); // remove old messages
+    document.querySelector('.reading').remove();
+    document.querySelector('.password').remove();
+    document.querySelector('.sending').remove();
+    document.querySelector('.cleaning').remove();
+    document.querySelector('h2')?.remove();
+
+    showMessage();
+</script>
+
+</html>
